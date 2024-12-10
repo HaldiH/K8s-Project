@@ -1,0 +1,55 @@
+services:
+  adservice:
+    build: src/adservice
+    environment:
+      - PORT=9555
+
+  cartservice:
+    build: src/cartservice/src
+    environment:
+      - PORT=7070
+
+  checkoutservice:
+    build: src/checkoutservice
+    environment:
+      - PORT=5050
+
+  currencyservice:
+    build: src/currencyservice
+    environment:
+      - PORT=7000
+
+  emailservice:
+    build: src/emailservice
+    environment:
+      - PORT=8080
+
+  frontend:
+    build: src/frontend
+    environment:
+      - PORT=8080
+
+  paymentservice:
+    build: src/paymentservice
+    environment:
+      - PORT=50051
+
+  productcatalogservice:
+    build: src/productcatalogservice
+    environment:
+      - PORT=3550
+
+  recommendationservice:
+    build: src/recommendationservice
+    environment:
+      - PORT=8080
+
+  shippingservice:
+    build: src/shippingservice
+    environment:
+      - PORT=50051
+
+  shoppingassistantservice:
+    build: src/shoppingassistantservice
+    environment:
+      - PORT=8080
