@@ -3,53 +3,83 @@ services:
     build: src/adservice
     environment:
       - PORT=9555
+      - DISABLE_PROFILER=true
 
   cartservice:
     build: src/cartservice/src
     environment:
       - PORT=7070
+      - DISABLE_PROFILER=true
 
   checkoutservice:
     build: src/checkoutservice
     environment:
       - PORT=5050
+      - DISABLE_PROFILER=true
+      - SHIPPING_SERVICE_ADDR=shippingservice:50051
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
+      - CART_SERVICE_ADDR=cartservice:7070
+      - CURRENCY_SERVICE_ADDR=currencyservice:7000
+      - EMAIL_SERVICE_ADDR=emailservice:8080
+      - PAYMENT_SERVICE_ADDR=paymentservice:50051
 
   currencyservice:
     build: src/currencyservice
     environment:
       - PORT=7000
+      - DISABLE_PROFILER=true
 
   emailservice:
     build: src/emailservice
     environment:
       - PORT=8080
+      - DISABLE_PROFILER=true
 
   frontend:
     build: src/frontend
     environment:
       - PORT=8080
-
+      - DISABLE_PROFILER=true
+      - SHIPPING_SERVICE_ADDR=shippingservice:50051
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
+      - CART_SERVICE_ADDR=cartservice:7070
+      - CURRENCY_SERVICE_ADDR=currencyservice:7000
+      - EMAIL_SERVICE_ADDR=emailservice:8080
+      - PAYMENT_SERVICE_ADDR=paymentservice:50051
+      - RECOMMENDATION_SERVICE_ADDR=recommendationservice:8080
+      - CHECKOUT_SERVICE_ADDR=checkoutservice:5050
+      - AD_SERVICE_ADDR=adservice:9555
+      - SHOPPING_ASSISTANT_SERVICE_ADDR=shoppingassistantservice:8080
+    ports:
+      - "8080:8080"
+    
   paymentservice:
     build: src/paymentservice
     environment:
       - PORT=50051
+      - DISABLE_PROFILER=true
 
   productcatalogservice:
     build: src/productcatalogservice
     environment:
       - PORT=3550
+      - DISABLE_PROFILER=true
 
   recommendationservice:
     build: src/recommendationservice
     environment:
       - PORT=8080
+      - DISABLE_PROFILER=true
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
 
   shippingservice:
     build: src/shippingservice
     environment:
       - PORT=50051
+      - DISABLE_PROFILER=true
 
   shoppingassistantservice:
     build: src/shoppingassistantservice
     environment:
       - PORT=8080
+      - DISABLE_PROFILER=true
