@@ -10,6 +10,7 @@ services:
     environment:
       - PORT=7070
       - DISABLE_PROFILER=true
+      - REDIS_ADDR=redis:6379
 
   checkoutservice:
     build: src/checkoutservice
@@ -83,3 +84,11 @@ services:
     environment:
       - PORT=8080
       - DISABLE_PROFILER=true
+
+  redis:
+    image: redis:latest
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
